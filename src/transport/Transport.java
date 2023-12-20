@@ -56,8 +56,13 @@ public abstract class Transport<T extends Driver> implements Competing{
     }
 
     public abstract void startMove();
-    public abstract void finishtMove();
-    public abstract void getType();
+    public abstract void finishMove();
+    public String getType(){
+        String vehicleType;
+        vehicleType = String.valueOf(Type.valueOf("CAR"));
+        return vehicleType;
+    };
+
     public abstract void printType();
 
 

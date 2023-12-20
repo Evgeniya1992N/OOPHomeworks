@@ -2,9 +2,24 @@ package transport;
 
 public class Truck extends Transport<DriverC>{
     public enum TruckWeight{
-        N1,
-        N2,
-        N3
+        N1(3.5),
+        N2(12),
+        N3(13);
+
+        private double loadWeight;
+
+        TruckWeight(double loadWeight) {
+            this.loadWeight = loadWeight;
+        }
+
+        public double getLoadWeight() {
+            return loadWeight;
+        }
+
+        public void setLoadWeight() {
+            this.loadWeight = loadWeight;
+        }
+
     }
         @Override
         public String toString() {
@@ -24,20 +39,26 @@ public class Truck extends Transport<DriverC>{
     }
 
     @Override
-    public void finishtMove() {
+    public void finishMove() {
         System.out.println("Truck of brand "+getBrand()+" finished moving");
 
     }
 
     @Override
-    public void getType() {
-
-    }
+    public String getType() {
+        String vehicleType;
+        vehicleType = String.valueOf(Type.valueOf("TRUCK"));
+        return vehicleType;
+    };
 
     @Override
     public void printType() {
-        System.out.println("Type of vehicle is Truck");
-
+        String TransportType;
+        TransportType = getType();
+        if (TransportType == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        System.out.println("Transport type is: " + TransportType);
     }
 
     @Override

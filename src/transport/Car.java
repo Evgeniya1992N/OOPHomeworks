@@ -27,19 +27,23 @@ public class Car extends Transport<DriverB> {
     }
 
     @Override
-    public void finishtMove() {
+    public void finishMove() {
         System.out.println("Car of brand "+getBrand()+" finished moving");
     }
-
     @Override
-    public void getType() {
-
-    }
-
+    public String getType() {
+        String vehicleType;
+        vehicleType = String.valueOf(Type.valueOf("CAR"));
+        return vehicleType;
+    };
     @Override
     public void printType() {
-        System.out.println("Type of vehicle is Car");
-
+        String TransportType;
+        TransportType = getType();
+        if (TransportType == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        System.out.println("Transport type is: " + TransportType);
     }
 
     @Override
