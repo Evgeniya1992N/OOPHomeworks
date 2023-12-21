@@ -45,15 +45,15 @@ public class Truck extends Transport<DriverC>{
     }
 
     @Override
-    public String getType() {
+    public Type getType() {
         String vehicleType;
         vehicleType = String.valueOf(Type.valueOf("TRUCK"));
-        return vehicleType;
+        return Type.valueOf(vehicleType);
     };
 
     @Override
     public void printType() {
-        String TransportType;
+        Type TransportType;
         TransportType = getType();
         if (TransportType == null) {
             System.out.println("Данных по транспортному средству недостаточно");

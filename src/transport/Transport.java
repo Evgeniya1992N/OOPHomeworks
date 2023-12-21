@@ -2,11 +2,6 @@ package transport;
 
 public abstract class Transport<T extends Driver> implements Competing{
 
-    public enum Type {
-        CAR,
-        BUS,
-        TRUCK
-    }
     private final String brand;
     private final String model;
     private double engineVolume;
@@ -57,11 +52,7 @@ public abstract class Transport<T extends Driver> implements Competing{
 
     public abstract void startMove();
     public abstract void finishMove();
-    public String getType(){
-        String vehicleType;
-        vehicleType = String.valueOf(Type.valueOf("CAR"));
-        return vehicleType;
-    };
+    public abstract Type getType();
 
     public abstract void printType();
 

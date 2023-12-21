@@ -31,14 +31,14 @@ public class Car extends Transport<DriverB> {
         System.out.println("Car of brand "+getBrand()+" finished moving");
     }
     @Override
-    public String getType() {
+    public Type getType() {
         String vehicleType;
         vehicleType = String.valueOf(Type.valueOf("CAR"));
-        return vehicleType;
+        return Type.valueOf(vehicleType);
     };
     @Override
     public void printType() {
-        String TransportType;
+        Type TransportType;
         TransportType = getType();
         if (TransportType == null) {
             System.out.println("Данных по транспортному средству недостаточно");
