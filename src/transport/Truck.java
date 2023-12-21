@@ -29,7 +29,8 @@ public class Truck extends Transport<DriverC>{
     public Truck(String brand,
                  String model,
                  double engineVolume,
-                 DriverC driver) {
+                 DriverC driver,
+                 TruckWeight truckWeight) {
         super(brand, model, engineVolume, driver);
     }
 

@@ -32,13 +32,15 @@ public class Main {
                     "Truck brand " + i,
                     "Truck model " + i,
                     4.0,
-                    driverC
+                    driverC,
+                    Truck.TruckWeight.N1
             );
             Bus bus = new Bus(
                     "Bus brand " +  i,
                     "Bus model " +  i,
                     1+i,
-                    driverD
+                    driverD,
+                    Bus.CapacityBus.LARGE
             );
             printInfo(car);
             printInfo(bus);
