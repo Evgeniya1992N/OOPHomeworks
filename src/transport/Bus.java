@@ -1,6 +1,14 @@
 package transport;
 
-public class Bus extends Transport<DriverD> {
+public class Bus extends Transport<DriverD> implements Diagnosticable{
+    @Override
+    public void runDiagnostic() throws DiagnosticNotAllowedException {
+        if (getGasTankBar() > 5 && getOilTankBar() > 5) {
+            System.out.println("Successful diagnostic ");
+        }
+        System.out.println("Diagnostic failed");
+    }
+
     public enum CapacityBus {
         EXTRASMALL,
         SMALL,
@@ -18,12 +26,20 @@ public class Bus extends Transport<DriverD> {
                String model,
                double engineVolume,
                DriverD driver,
+               int gasTankBar,
+               int oilTankBar,
                CapacityBus capacityBus) {
-        super(brand, model, engineVolume, driver);
+        super(brand, model, engineVolume, driver, gasTankBar, oilTankBar);
     }
 
     @Override
-    public void startMove() {
+    public void startMove() throws EmptyGasTankException, NoOilException {
+        if (getGasTankBar() == 0){
+            throw new EmptyGasTankException("Gas tank is empty, tank up!");
+        }
+        if (getOilTankBar() == 0){
+            throw new NoOilException();
+        }
         System.out.println("Bus of brand "+getBrand()+" started moving");
     }
 
