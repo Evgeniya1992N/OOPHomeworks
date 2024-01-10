@@ -2,7 +2,7 @@ package transport;
 
 import java.io.IOException;
 
-public class NoOilException extends IOException {
+public class NoOilException extends RuntimeException {
     public NoOilException() { super();}
 
     public NoOilException(String message) {
