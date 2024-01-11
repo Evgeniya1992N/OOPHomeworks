@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.ArrayList;
+
 public abstract class Transport<T extends Driver> implements Competing{
 
     private final String brand;
@@ -15,7 +17,8 @@ public abstract class Transport<T extends Driver> implements Competing{
                      double engineVolume,
                      T driver,
                      int gasTankBar,
-                     int oilTankBar) {
+                     int oilTankBar
+    ) {
         if (brand==null || brand.isEmpty()){
             brand = "default";
         }
@@ -109,4 +112,5 @@ public abstract class Transport<T extends Driver> implements Competing{
 
 
     }
+    ArrayList<Mechanic> mechanics = new ArrayList<>();
 }

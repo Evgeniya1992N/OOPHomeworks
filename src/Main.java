@@ -51,7 +51,7 @@ public class Main {
             printInfo(bus);
             printInfo(truck);
 
-            int carGas = car.getGasTankBar();
+           /* int carGas = car.getGasTankBar();
             System.out.println(carGas);
             try {
                 car.startMove();
@@ -86,7 +86,7 @@ public class Main {
                 bus.runDiagnostic();
             } catch (DiagnosticNotAllowedException e) {
                 throw new RuntimeException(e);
-            }
+            }*/
         }
 
 
@@ -95,6 +95,10 @@ public class Main {
     private static void printInfo(Transport<?> transport){
         System.out.println("Driver " + transport.getDriver().getName() + " drives  " + transport.getBrand() + " will participate in the run.");
     }
+
+
+
+
 
 
 }
