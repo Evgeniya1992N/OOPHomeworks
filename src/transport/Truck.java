@@ -32,8 +32,8 @@ public class Truck extends Transport<DriverC>{
                  DriverC driver,
                  int gasTankBar,
                  int oilTankBar,
-                 TruckWeight truckWeight) {
-        super(brand, model, engineVolume, driver, gasTankBar, oilTankBar);
+                 Mechanic mechanic) {
+        super(brand, model, engineVolume, driver, gasTankBar, oilTankBar, mechanic);
     }
 
     @Override

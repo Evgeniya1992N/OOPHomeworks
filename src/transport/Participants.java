@@ -1,10 +1,11 @@
 package transport;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Participants {
     public static void main(String[] args) {
-        ArrayList<Transport> participants = new ArrayList<>();
+        List<Transport> participants = new ArrayList<>();
 
             for (int i = 0; i <= 4; i++) {
                 DriverB driverB = new DriverB(
@@ -22,6 +23,7 @@ public class Participants {
                         true,
                         10 + i
                 );
+                Object mechanic = new Object();
                 Car car = new Car(
                         "Car brand " + i,
                         "Car model " + i,
@@ -29,7 +31,9 @@ public class Participants {
                         driverB,
                         5,
                         5,
-                        Car.CarModel.CUPE
+                        (Mechanic) mechanic
+
+
                 );
                 participants.add(car);
                 Truck truck = new Truck(
@@ -39,7 +43,7 @@ public class Participants {
                         driverC,
                         5,
                         5,
-                        Truck.TruckWeight.N1
+                        (Mechanic) mechanic
                 );
                 participants.add(truck);
                 Bus bus = new Bus(
@@ -49,7 +53,7 @@ public class Participants {
                         driverD,
                         -1 + i,
                         -1 + i,
-                        Bus.CapacityBus.LARGE
+                        (Mechanic) mechanic
                 );
                 participants.add(bus);
             }

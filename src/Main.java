@@ -27,7 +27,8 @@ public class Main {
                     driverB,
                     5,
                     5,
-                    Car.CarModel.CUPE
+                    new Mechanic("Ivan Ivanovich", "Company1")
+
             );
             Truck truck = new Truck(
                     "Truck brand " + i,
@@ -36,7 +37,7 @@ public class Main {
                     driverC,
                     5,
                     5,
-                    Truck.TruckWeight.N1
+                    new Mechanic("Ivan Ivanovich", "Company1")
             );
             Bus bus = new Bus(
                     "Bus brand " +  i,
@@ -45,11 +46,13 @@ public class Main {
                     driverD,
                     -1+i,
                     -1 +i,
-                    Bus.CapacityBus.LARGE
+                    new Mechanic("Ivan Ivanovich", "Company1")
             );
             printInfo(car);
             printInfo(bus);
             printInfo(truck);
+
+
 
            /* int carGas = car.getGasTankBar();
             System.out.println(carGas);
@@ -95,6 +98,8 @@ public class Main {
     private static void printInfo(Transport<?> transport){
         System.out.println("Driver " + transport.getDriver().getName() + " drives  " + transport.getBrand() + " will participate in the run.");
     }
+
+
 
 
 

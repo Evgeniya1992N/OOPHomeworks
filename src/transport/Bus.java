@@ -28,8 +28,8 @@ public class Bus extends Transport<DriverD> implements Diagnosticable{
                DriverD driver,
                int gasTankBar,
                int oilTankBar,
-               CapacityBus capacityBus) {
-        super(brand, model, engineVolume, driver, gasTankBar, oilTankBar);
+               Mechanic mechanic) {
+        super(brand, model, engineVolume, driver, gasTankBar, oilTankBar, mechanic);
     }
 
     @Override

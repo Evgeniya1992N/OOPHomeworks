@@ -27,8 +27,8 @@ public class Car extends Transport<DriverB> implements Diagnosticable{
                DriverB driver,
                int gasTankBar,
                int oilTankBar,
-               CarModel carModel) {
-        super(brand, model, engineVolume, driver, gasTankBar, oilTankBar);
+               Mechanic mechanic) {
+        super(brand, model, engineVolume, driver, gasTankBar, oilTankBar, mechanic);
     }
 
     @Override
