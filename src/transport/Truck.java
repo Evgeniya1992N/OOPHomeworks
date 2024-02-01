@@ -1,14 +1,6 @@
 package transport;
 
-public class Truck extends Transport<DriverC> implements Diagnosticable{
-    @Override
-    public void runDiagnostic() throws DiagnosticNotAllowedException {
-        if (getGasTankBar() > 2 && getOilTankBar() > 2) {
-            System.out.println("Successful diagnostic ");
-        }
-        System.out.println("Diagnostic failed");
-    }
-
+public class Truck extends Transport<DriverC>{
     public enum TruckWeight{
         N1(3.5),
         N2(12),
@@ -40,14 +32,14 @@ public class Truck extends Transport<DriverC> implements Diagnosticable{
                  DriverC driver,
                  int gasTankBar,
                  int oilTankBar,
-                 TruckWeight truckWeight) {
-        super(brand, model, engineVolume, driver, gasTankBar, oilTankBar);
+                 Mechanic mechanic) {
+        super(brand, model, engineVolume, driver, gasTankBar, oilTankBar, mechanic);
     }
 
     @Override
     public void startMove() throws EmptyGasTankException, NoOilException{
         if (getGasTankBar() == 0){
-            throw new EmptyGasTankException();
+            throw new EmptyGasTankException("Gas tank is empty, tank up!");
         }
         if (getOilTankBar() == 0){
             throw new NoOilException();

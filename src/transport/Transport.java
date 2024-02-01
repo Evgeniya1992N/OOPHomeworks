@@ -1,5 +1,8 @@
 package transport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport<T extends Driver> implements Competing{
 
     private final String brand;
@@ -9,13 +12,24 @@ public abstract class Transport<T extends Driver> implements Competing{
 
     private int gasTankBar;
     private int oilTankBar;
+    private Mechanic mechanic;
+
+    public List<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
+    public void setMechanics(List<Mechanic> mechanics) {
+        this.mechanics = mechanics;
+    }
 
     public Transport(String brand,
                      String model,
                      double engineVolume,
                      T driver,
                      int gasTankBar,
-                     int oilTankBar) {
+                     int oilTankBar,
+                    Mechanic mechanic
+    ) {
         if (brand==null || brand.isEmpty()){
             brand = "default";
         }
@@ -99,6 +113,7 @@ public abstract class Transport<T extends Driver> implements Competing{
         }
     };
 
+    List<Mechanic> mechanics = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -109,4 +124,5 @@ public abstract class Transport<T extends Driver> implements Competing{
 
 
     }
+
 }
