@@ -1,8 +1,6 @@
 import transport.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Main {
@@ -113,6 +111,14 @@ public class Main {
         carMechanicMap.forEach((car, mechanics) -> {
             System.out.println("Car: " + car.getModel() + ", Mechanics: " + mechanics);
         });
+
+        Set<DriverB> driverBHashSet = new HashSet<>();
+        Iterator <DriverB> driverIterator = driverBHashSet.iterator();
+        while (driverIterator.hasNext()) {
+            System.out.println(driverBHashSet);
+            driverIterator.next();
+        }
+
 
     }
     }
