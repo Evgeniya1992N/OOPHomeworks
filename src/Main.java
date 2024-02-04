@@ -1,28 +1,35 @@
 import transport.*;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
 public class Main {
+
+
     public static void main(String[] args) {
 
 
-        for (int i = 0; i <= 4; i++){
+        for (int i = 0; i <= 4; i++) {
             DriverB driverB = new DriverB(
                     "Driver No" + i,
                     true,
                     5 + i
-                    );
+            );
             DriverC driverC = new DriverC(
-                    "Driver No" + i ,
+                    "Driver No" + i,
                     true,
-                    7+i
-                     );
+                    7 + i
+            );
             DriverD driverD = new DriverD(
                     "Driver No" + i,
                     true,
-                    10+i
+                    10 + i
             );
             Car car = new Car(
                     "Car brand " + i,
-                    "Car model "  + i,
+                    "Car model " + i,
                     1.6,
                     driverB,
                     5,
@@ -40,17 +47,20 @@ public class Main {
                     new Mechanic("Ivan Ivanovich", "Company1")
             );
             Bus bus = new Bus(
-                    "Bus brand " +  i,
-                    "Bus model " +  i,
-                    1+i,
+                    "Bus brand " + i,
+                    "Bus model " + i,
+                    1 + i,
                     driverD,
-                    -1+i,
-                    -1 +i,
+                    -1 + i,
+                    -1 + i,
                     new Mechanic("Ivan Ivanovich", "Company1")
             );
             printInfo(car);
             printInfo(bus);
             printInfo(truck);
+
+        }
+
 
 
 
@@ -93,17 +103,19 @@ public class Main {
         }
 
 
-    }
+
 
     private static void printInfo(Transport<?> transport){
-        System.out.println("Driver " + transport.getDriver().getName() + " drives  " + transport.getBrand() + " will participate in the run.");
+
+
+        Map<Car, List<Mechanic>> carMechanicMap = new HashMap<>();
+
+        carMechanicMap.forEach((car, mechanics) -> {
+            System.out.println("Car: " + car.getModel() + ", Mechanics: " + mechanics);
+        });
+
+    }
     }
 
 
 
-
-
-
-
-
-}
