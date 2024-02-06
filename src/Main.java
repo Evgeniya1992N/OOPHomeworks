@@ -105,18 +105,28 @@ public class Main {
 
     private static void printInfo(Transport<?> transport){
 
+        HashSet<String> driversDatabase = new HashSet<>();
 
-        Map<Car, List<Mechanic>> carMechanicMap = new HashMap<>();
+        // Добавление водителей в базу данных
+        addDriverToDatabase(driversDatabase, "Иванов");
+        addDriverToDatabase(driversDatabase, "Петров");
+        addDriverToDatabase(driversDatabase, "Сидоров");
+        addDriverToDatabase(driversDatabase, "Иванов"); // Повторное добавление
 
-        carMechanicMap.forEach((car, mechanics) -> {
-            System.out.println("Car: " + car.getModel() + ", Mechanics: " + mechanics);
-        });
+        // Вывод всех водителей в консоль с помощью итератора
+        System.out.println("Список водителей:");
+        Iterator<String> iterator = driversDatabase.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
 
-        Set<DriverB> driverBHashSet = new HashSet<>();
-        Iterator <DriverB> driverIterator = driverBHashSet.iterator();
-        while (driverIterator.hasNext()) {
-            System.out.println(driverBHashSet);
-            driverIterator.next();
+    // Метод для добавления водителя в базу данных с выводом информации о добавлении
+    public static void addDriverToDatabase(HashSet<String> database, String driver) {
+        if (database.add(driver)) {
+            System.out.println("Водитель " + driver + " добавлен в базу данных.");
+        } else {
+            System.out.println("Водитель " + driver + " уже есть в базе данных.");
         }
 
 
