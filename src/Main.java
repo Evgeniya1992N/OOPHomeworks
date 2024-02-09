@@ -105,17 +105,15 @@ public class Main {
 
     private static void printInfo(Transport<?> transport){
 
-        HashSet<String> driversDatabase = new HashSet<>();
+        HashSet<DriverB> driversDatabase = new HashSet<>();
 
-        // Добавление водителей в базу данных
-        addDriverToDatabase(driversDatabase, "Иванов");
-        addDriverToDatabase(driversDatabase, "Петров");
-        addDriverToDatabase(driversDatabase, "Сидоров");
-        addDriverToDatabase(driversDatabase, "Иванов"); // Повторное добавление
-
+        DriverB driver1 = new DriverB("John", true, 20);
+        DriverB driver2 = new DriverB("Jane", true, 5);
+        DriverB driver3 = new DriverB("John", false, 10);
+        DriverC driver4 = new DriverC("John", false, 10);
         // Вывод всех водителей в консоль с помощью итератора
         System.out.println("Список водителей:");
-        Iterator<String> iterator = driversDatabase.iterator();
+        Iterator<DriverB> iterator = driversDatabase.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
