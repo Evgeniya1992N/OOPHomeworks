@@ -57,70 +57,35 @@ public class Main {
             printInfo(bus);
             printInfo(truck);
 
+
+
         }
-
-
-
-
-           /* int carGas = car.getGasTankBar();
-            System.out.println(carGas);
-            try {
-                car.startMove();
-            } catch (NoOilException | EmptyGasTankException message) {
-                System.out.println(message.getMessage());
-            } finally {
-                System.out.println("Проверка завершена");
-            }
-            int busGas = bus.getGasTankBar();
-            System.out.println(busGas);
-            try {
-                bus.startMove();
-            } catch (NoOilException | EmptyGasTankException message) {
-                System.out.println(message.getMessage());
-            } finally {
-                System.out.println("Проверка завершена");
-            }
-
-            try {
-                car.runDiagnostic();
-            } catch (DiagnosticNotAllowedException e) {
-                throw new RuntimeException(e);
-            }
-
-            try {
-                truck.runDiagnostic();
-            } catch (DiagnosticNotAllowedException e) {
-                throw new RuntimeException(e);
-            }
-
-            try {
-                bus.runDiagnostic();
-            } catch (DiagnosticNotAllowedException e) {
-                throw new RuntimeException(e);
-            }*/
         }
-
-
-
 
     private static void printInfo(Transport<?> transport){
 
-        HashSet<DriverB> driversDatabase = new HashSet<>();
+        HashSet<Object> driversDatabase = new HashSet<>();
+        addDriverToDatabase(driversDatabase, new DriverB("Ivanov", true, 5));
+        addDriverToDatabase(driversDatabase, new DriverC("Ivanov", true, 5));
+        addDriverToDatabase(driversDatabase, new DriverD("Petrov", false, 10));
 
-        DriverB driver1 = new DriverB("John", true, 20);
-        DriverB driver2 = new DriverB("Jane", true, 5);
-        DriverB driver3 = new DriverB("John", false, 10);
-        DriverC driver4 = new DriverC("John", false, 10);
         // Вывод всех водителей в консоль с помощью итератора
         System.out.println("Список водителей:");
-        Iterator<DriverB> iterator = driversDatabase.iterator();
+        Iterator<Object> iterator = driversDatabase.iterator();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+           Object driver = iterator.next();
+            if (driver instanceof DriverB) {
+                System.out.println("Категория B: " + ((DriverB) driver).getName());
+            } else if (driver instanceof DriverC) {
+                System.out.println("Категория C: " + ((DriverC) driver).getName());
+            } else if (driver instanceof DriverD) {
+                System.out.println("Категория D: " + ((DriverD) driver).getName());
+            }
         }
     }
 
     // Метод для добавления водителя в базу данных с выводом информации о добавлении
-    public static void addDriverToDatabase(HashSet<String> database, String driver) {
+    public static void addDriverToDatabase(HashSet<Object> database, Object driver) {
         if (database.add(driver)) {
             System.out.println("Водитель " + driver + " добавлен в базу данных.");
         } else {

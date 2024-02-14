@@ -5,12 +5,14 @@ public abstract class Driver {
     private boolean hasDrivingLicence;
     private int experienceInYears;
 
+
     public Driver(String name,
                   boolean hasDrivingLicence,
                   int experienceInYears) {
         this.name = name;
         this.hasDrivingLicence = hasDrivingLicence;
         this.experienceInYears = experienceInYears;
+
     }
 
     public String getName() {
