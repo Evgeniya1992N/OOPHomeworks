@@ -64,16 +64,16 @@ public class Main {
 
     private static void printInfo(Transport<?> transport){
 
-        HashSet<Object> driversDatabase = new HashSet<>();
+        HashSet<Driver> driversDatabase = new HashSet<>();
         addDriverToDatabase(driversDatabase, new DriverB("Ivanov", true, 5));
         addDriverToDatabase(driversDatabase, new DriverC("Ivanov", true, 5));
         addDriverToDatabase(driversDatabase, new DriverD("Petrov", false, 10));
-
+        addDriverToDatabase(driversDatabase, new DriverD("Petrov", false, 10));
         // Вывод всех водителей в консоль с помощью итератора
         System.out.println("Список водителей:");
-        Iterator<Object> iterator = driversDatabase.iterator();
+        Iterator<Driver> iterator = driversDatabase.iterator();
         while (iterator.hasNext()) {
-           Object driver = iterator.next();
+           Driver driver = iterator.next();
             if (driver instanceof DriverB) {
                 System.out.println("Категория B: " + ((DriverB) driver).getName());
             } else if (driver instanceof DriverC) {
@@ -85,14 +85,17 @@ public class Main {
     }
 
     // Метод для добавления водителя в базу данных с выводом информации о добавлении
-    public static void addDriverToDatabase(HashSet<Object> database, Object driver) {
-        if (database.add(driver)) {
-            System.out.println("Водитель " + driver + " добавлен в базу данных.");
+    public static void addDriverToDatabase(HashSet<Driver> database, Driver driver) {
+        if (!database.contains(driver)) {
+            boolean added = database.add(driver);
+            if (added) {
+                System.out.println("Водитель " + driver.getName() + " добавлен в базу данных.");
+            } else {
+                System.out.println("Ошибка при добавлении водителя " + driver.getName() + " в базу данных.");
+            }
         } else {
-            System.out.println("Водитель " + driver + " уже есть в базе данных.");
+            System.out.println("Водитель " + driver.getName() + " уже есть в базе данных.");
         }
-
-
     }
     }
 
