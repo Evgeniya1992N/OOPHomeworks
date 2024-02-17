@@ -43,5 +43,18 @@ public abstract class Driver {
     public abstract void finishMove();
     public abstract void refill();
 
+    @Override
+    public int hashCode() {
+        return name.hashCode() ;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Driver other = (Driver) obj;
+        return name.equals(other.name) ;
+    }
 }
