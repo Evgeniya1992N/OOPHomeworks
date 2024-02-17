@@ -1,8 +1,6 @@
 import transport.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Main {
@@ -59,61 +57,45 @@ public class Main {
             printInfo(bus);
             printInfo(truck);
 
+
+
         }
-
-
-
-
-           /* int carGas = car.getGasTankBar();
-            System.out.println(carGas);
-            try {
-                car.startMove();
-            } catch (NoOilException | EmptyGasTankException message) {
-                System.out.println(message.getMessage());
-            } finally {
-                System.out.println("Проверка завершена");
-            }
-            int busGas = bus.getGasTankBar();
-            System.out.println(busGas);
-            try {
-                bus.startMove();
-            } catch (NoOilException | EmptyGasTankException message) {
-                System.out.println(message.getMessage());
-            } finally {
-                System.out.println("Проверка завершена");
-            }
-
-            try {
-                car.runDiagnostic();
-            } catch (DiagnosticNotAllowedException e) {
-                throw new RuntimeException(e);
-            }
-
-            try {
-                truck.runDiagnostic();
-            } catch (DiagnosticNotAllowedException e) {
-                throw new RuntimeException(e);
-            }
-
-            try {
-                bus.runDiagnostic();
-            } catch (DiagnosticNotAllowedException e) {
-                throw new RuntimeException(e);
-            }*/
         }
-
-
-
 
     private static void printInfo(Transport<?> transport){
 
+        HashSet<Driver> driversDatabase = new HashSet<>();
+        addDriverToDatabase(driversDatabase, new DriverB("Ivanov", true, 5));
+        addDriverToDatabase(driversDatabase, new DriverC("Ivanov", true, 5));
+        addDriverToDatabase(driversDatabase, new DriverD("Petrov", false, 10));
+        addDriverToDatabase(driversDatabase, new DriverD("Petrov", false, 10));
+        // Вывод всех водителей в консоль с помощью итератора
+        System.out.println("Список водителей:");
+        Iterator<Driver> iterator = driversDatabase.iterator();
+        while (iterator.hasNext()) {
+           Driver driver = iterator.next();
+            if (driver instanceof DriverB) {
+                System.out.println("Категория B: " + ((DriverB) driver).getName());
+            } else if (driver instanceof DriverC) {
+                System.out.println("Категория C: " + ((DriverC) driver).getName());
+            } else if (driver instanceof DriverD) {
+                System.out.println("Категория D: " + ((DriverD) driver).getName());
+            }
+        }
+    }
 
-        Map<Car, List<Mechanic>> carMechanicMap = new HashMap<>();
-
-        carMechanicMap.forEach((car, mechanics) -> {
-            System.out.println("Car: " + car.getModel() + ", Mechanics: " + mechanics);
-        });
-
+    // Метод для добавления водителя в базу данных с выводом информации о добавлении
+    public static void addDriverToDatabase(HashSet<Driver> database, Driver driver) {
+        if (!database.contains(driver)) {
+            boolean added = database.add(driver);
+            if (added) {
+                System.out.println("Водитель " + driver.getName() + " добавлен в базу данных.");
+            } else {
+                System.out.println("Ошибка при добавлении водителя " + driver.getName() + " в базу данных.");
+            }
+        } else {
+            System.out.println("Водитель " + driver.getName() + " уже есть в базе данных.");
+        }
     }
     }
 
